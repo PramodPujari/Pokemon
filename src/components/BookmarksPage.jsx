@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 const BookmarksPage = () => {
   
   const [bookmarkedPokemon, setBookmarkedPokemon] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     const keys = Object.keys(localStorage);
@@ -12,10 +13,11 @@ const BookmarksPage = () => {
     }));
     console.log(bookmarkedPokemonArray);
     setBookmarkedPokemon(bookmarkedPokemonArray);
-  }, [localStorage]);
+  }, [refresh]);
 
   const handleRemoveBookmark = (pokemonName) => {
     localStorage.removeItem(pokemonName);
+    setRefresh(!refresh);
   };
 
 
