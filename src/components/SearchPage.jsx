@@ -9,6 +9,7 @@ const SearchPage = () => {
   const [pokemonData, setPokemonData] = useState(null);
 
   const handleSearch = async () => {
+    setError('');
     try {
       setLoading(true);
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
